@@ -357,6 +357,69 @@ int main() {
     return 0;
 }
 
+// 11. Palindrome Array Check
+
+void solve() {
+    int n; cin >> n;
+
+    vector<int> v(n);
+    for(int i=0; i<n; i++) cin >> v[i];
+
+    int start=0; int end=n-1;
+
+    while(start<end) {
+        if(v[start]!=v[end]) {
+            cout << "NO\n";
+            return;
+        }
+        start ++;
+        end --;
+    }
+    cout << "YES\n";
+}
+
+int main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    
+    int t; cin >> t;
+    while(t--) solve();
+
+    return 0;
+}
+
+// 12. Lucky Array
+
+void solve() {
+    int n; cin >> n;
+
+    vector<int> v(n);
+    for(int i=0; i<n; i++) cin >> v[i];
+
+    int min = v[0];
+    for(int i=0; i<n; i++) {
+        if(v[i]<min) min = v[i];
+    }
+
+    int count=0;
+    for(int i=0; i<n; i++) {
+        if(v[i]==min) count ++;
+    }
+
+    if(count%2==0) cout << "Unlucky\n";
+    else cout << "Lucky\n";
+}
+
+int main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0); cout.tie(0);
+
+    int t; cin >> t;
+    while(t--) solve();
+
+    return 0;  
+}
 
 
 
