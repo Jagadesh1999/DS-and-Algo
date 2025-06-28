@@ -192,4 +192,47 @@ int main() {
     return 0;  
 }
 
+// 5. Matrix multiplication
 
+void solve() {
+    int n, m, p;
+    cin >> n >> m >> p;
+    
+    int arr1[n][m];
+    for(int i=0; i<n; i++) {
+        for(int j=0; j<m; j++) {
+            cin >> arr1[i][j];
+        }
+    }
+    
+    int arr2[m][p];
+    for(int i=0; i<m; i++) {
+        for(int j=0; j<p; j++) {
+            cin >> arr2[i][j];
+        }
+    }
+    
+    int res[n][p];
+    
+    for(int i=0; i<n; i++) {
+        for(int j=0; j<p; j++) {
+            res[i][j] = 0;
+            for(int k=0; k<m; k++) {
+                res[i][j] += arr1[i][k] * arr2[k][j];
+            }
+        }
+    }
+    
+    for(int i=0; i<n; i++) {
+        for(int j=0; j<p; j++) {
+            cout << res[i][j] << " ";
+        }
+    }
+    
+}
+
+int main() {
+    solve();
+    
+    return 0;
+}
