@@ -421,7 +421,38 @@ int main() {
     return 0;  
 }
 
+// 13. Nearest neighbour of each element in the array
 
+#include <bits/stdc++.h>
+using namespace std;
+
+void solve() {
+    int n; cin >> n;
+    
+    vector<int> v(n); 
+    for(int i=0; i<n; i++) {
+        cin >> v[i];
+    }
+    
+    for(int i=0; i<n; i++) {
+        bool nearestAvailable = false;
+        int nearest_max = *max_element(v.begin(), v.end());
+        for(int j=0; j<n; j++) {
+            if((v[i]<v[j]) && (v[j]<=nearest_max)) {
+                nearestAvailable = true;
+                nearest_max=v[j];
+            }
+        }
+        if(nearestAvailable) cout << nearest_max << " ";
+        else cout << "-1 ";
+    }
+}
+
+int main() {
+    solve();
+    
+    return 0;
+}
 
 
 
