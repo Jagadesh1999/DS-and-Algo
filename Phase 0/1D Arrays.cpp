@@ -288,28 +288,25 @@ int main() {
 // 9. Is B a subsequence of A?
 
 void solve() {
-    int n, m;
-    cin >> n >> m;
-
-    vector<int> a(n);
-    for(int i=0; i<n; i++) cin >> a[i];
-
-    vector<int> b(m);
-    for(int i=0; i<m; i++) cin >> b[i];
-
-    int count=0;
-    int j=0;
-
+    int n; cin >> n;
+    int m; cin >> m;
+    
+    vector<int> v1(n); for(int i=0; i<n; i++) cin >> v1[i];
+    vector<int> v2(m); for(int i=0; i<m; i++) cin >> v2[i];
+    
+    int j=0; 
+    
     for(int i=0; i<n; i++) {
-        if(a[i]==b[j]) {
-            count ++;
-            j++;
-            continue;
-        }else continue;
+        if(j<m) {
+            if(v1[i]==v2[j]) {
+                j++;
+                continue;
+            } 
+        }
     }
-
-    if(count==m) cout << "YES\n";
-    else cout << "NO\n";
+    
+    if(j==m) cout << "Yes\n";
+    else cout << "No\n";
 }
 
 int main() {
