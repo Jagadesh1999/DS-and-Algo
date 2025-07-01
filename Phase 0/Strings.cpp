@@ -113,3 +113,60 @@ int main() {
     return 0;  
 }
 
+// 5. String Functions
+
+#include<bits/stdc++.h>
+using namespace std;
+
+void solve(){
+    int n, q;
+    cin >> n >> q;
+    cin.ignore();
+
+    string s; 
+    getline(cin, s);
+    int l, r; // Only the declaration part
+
+    while (q--) {
+        string type; cin >> type;
+        if(type=="pop_back"){
+            s.pop_back();
+        }else if(type=="front"){
+            cout << s.front() << endl;
+        }else if(type=="back"){
+            cout << s.back() << endl;
+        }else if(type=="sort"){
+            cin >> l >> r;
+            if(l > r) {
+                swap(l, r);
+            }
+            sort(s.begin()+l-1, s.begin()+r);
+        }else if(type=="reverse") {
+            cin >> l >> r;
+            if (l > r) {
+                swap(l, r);
+            }
+            reverse(s.begin()+l-1, s.begin()+r);
+        }else if (type=="print") {
+            int pos; cin >> pos;
+            cout << s[pos-1] << endl;
+        } else if (type=="substr") {
+            cin >> l >> r;
+            if (l > r) {
+                swap(l, r);
+            }
+            string substr = s.substr(l-1, r-l + 1);
+            cout << substr << endl;
+        } else {
+            char c; cin >> c;
+            s.push_back(c);
+        }
+    }
+}
+
+int main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0); cout.tie(0);
+    solve();
+    return 0;
+}
