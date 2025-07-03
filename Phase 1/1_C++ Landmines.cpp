@@ -132,5 +132,33 @@ int main() {
     return 0;  
 }
 
+// 5. Minimum operations to built the increasing Array/non - decreasing array
+void solve() {
+    int n; cin>>n;
+
+    vector<int> v(n); 
+    for(int i=0; i<n; i++) cin>>v[i];
+
+    long long count=0;
+
+    for(int i=1; i<n; i++) {
+        if(v[i]<v[i-1]) {
+            count += v[i-1]-v[i];
+            v[i]=v[i-1];
+        }
+    }
+    cout << count << "\n";
+}
+
+int main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0); cout.tie(0);
+
+    int t; cin>>t;
+    while(t--) solve();
+
+    return 0;  
+}
+
 
 
