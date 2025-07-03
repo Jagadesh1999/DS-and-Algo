@@ -132,7 +132,40 @@ int main() {
     return 0;  
 }
 
-// 5. Minimum operations to built the increasing Array/non - decreasing array
+// 5. The Missing Number
+
+void solve() {
+    int n; cin>>n;
+
+    vector<int> v1(n);
+    for(int i=0; i<n; i++) cin>>v1[i];
+    vector<int> v2(n-1);
+    for(int i=0; i<n-1; i++) cin>>v2[i];
+    vector<int> v3(n-2);
+    for(int i=0; i<n-2; i++) cin>>v3[i];
+
+    int sum_1, sum_2, sum_3;
+    sum_1 = sum_2 = sum_3 = 0;
+
+    for(int i=0; i<n; i++) sum_1 += v1[i];
+    for(int i=0; i<n-1; i++) sum_2 += v2[i];
+    for(int i=0; i<n-2; i++) sum_3 += v3[i];
+
+    cout << sum_1 - sum_2 << " " << sum_2 - sum_3 << "\n";
+}
+
+int main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0); cout.tie(0);
+
+    int t; cin>>t;
+    while(t--) solve();
+
+    return 0;  
+}
+
+
+// 6. Minimum operations to built the increasing Array/non - decreasing array
 void solve() {
     int n; cin>>n;
 
