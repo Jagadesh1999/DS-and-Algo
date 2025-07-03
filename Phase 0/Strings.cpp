@@ -171,3 +171,28 @@ int main() {
     return 0;
 }
 
+// 6. String URL
+
+void solve() {
+    string s;
+    getline(cin,s);
+
+    int value = s.find('?');
+    for(int i=value+1; i<s.size(); i++) {
+        if(s[i]=='&') {
+            cout << "\n";
+        } else if(s[i]=='=') {
+            cout << ": ";
+        }
+        else cout << s[i];
+    }
+    cout << "\n";
+}
+
+int main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0); cout.tie(0);
+    
+    solve();
+    return 0;  
+}
