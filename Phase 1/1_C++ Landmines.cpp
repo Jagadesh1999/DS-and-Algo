@@ -1,4 +1,5 @@
 // 1. Odd One Out
+
 void solve() {
     int n; cin>>n;
     vector<int> v(n);
@@ -232,5 +233,36 @@ int main() {
     return 0;  
 }
 
+// 8. Intersection and Union of Two Rectangles
+
+void solve() {
+    int x1, y1, x2, y2;
+    cin >> x1 >> y1 >> x2 >> y2;
+
+    int x3, y3, x4, y4;
+    cin >> x3 >> y3 >> x4 >> y4;
+
+    int area_1 = (x2-x1)*(y2-y1);
+    int area_2 = (x4-x3)*(y4-y3);
+
+    int x_overlap = min(x2, x4) - max(x1, x3);
+    int y_overlap = min(y2, y4) - max(y1, y3);
+
+    int intersection = max(0, x_overlap) * max(0, y_overlap);
+
+    cout << intersection << " ";
+
+    cout << area_1 + area_2 - intersection << "\n";
+}
+
+int main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0); cout.tie(0);
+
+    int t; cin>>t;
+    while(t--) solve();
+
+    return 0;  
+}
 
 
