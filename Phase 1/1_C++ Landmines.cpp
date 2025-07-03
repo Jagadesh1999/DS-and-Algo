@@ -164,8 +164,47 @@ int main() {
     return 0;  
 }
 
+// 6. Perfect Square Cube Check
 
-// 6. Minimum operations to built the increasing Array/non - decreasing array
+void solve() {
+    int a, b;
+    cin >> a >> b;
+
+    bool square_root = false; bool cube_root = false;
+    if(a==1) {
+        for(int i=1; i*i<=b; i++) {
+            if(i*i==b) {
+                square_root=true;
+                cout << "YES\n";
+            }
+        }
+        if(!square_root) cout << "NO\n";
+    }
+
+    else if(a==2) {
+        for(int i=1; i*i*i<=b; i++) {
+            if(i*i*i==b) {
+                cube_root=true;
+                cout << "YES\n";
+            }
+        }
+        if(!cube_root) cout << "NO\n";
+    }
+}
+
+int main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    
+    int t; cin >> t;
+    while(t--) solve();
+
+    return 0;
+}
+
+
+// 7. Minimum operations to built the increasing Array/non - decreasing array
 void solve() {
     int n; cin>>n;
 
