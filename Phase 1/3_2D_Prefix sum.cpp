@@ -76,3 +76,54 @@ int main() {
     difference_array_2D();
     return 0;
 }
+
+// 2. Rectangle Sum Query
+
+#include <bits/stdc++.h>
+using namespace std;
+
+const int mod=1e9+7;
+void solve() {
+    int n, m, q;
+    cin >> n >> m >> q;
+
+    int mat[n][m];
+    for(int i=0; i<n; i++) {
+        for(int j=0; j<m; j++) {
+            cin>>mat[i][j];
+            mat[i][j]=((mat[i][j]%mod)+mod)%mod;
+        }
+    }
+
+    int ps[n][m];
+    for(int i=0; i<n; i++) {
+        for(int j=0; j<m; j++) {
+            ps[i][j]=mat[i][j];
+            if(i>0) ps[i][j]=(ps[i][j]+ps[i-1][j])%mod;
+            if(j>0) ps[i][j]=(ps[i][j]+ps[i][j-1])%mod;
+            if(i>0 && j>0) ps[i][j]=((ps[i][j]-ps[i-1][j-1])+mod)%mod;
+        }
+    }
+
+    while(q--) {
+        int x1, y1, x2, y2;
+        cin >> x1 >> y1 >> x2 >> y2;
+        x1-=1; y1-=1; x2-=1; y2-=1;
+
+        int total = ps[x2][y2];
+        if(x1>0) total=((total-ps[x1-1][y2])+mod)%mod;
+        if(y1>0) total=((total-ps[x2][y1-1])+mod)%mod;
+        if(x1>0 && y1>0) total=(total+ps[x1-1][y1-1])%mod;
+
+        cout << total << "\n";
+    }
+}
+
+int main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0); cout.tie(0);
+
+    solve();
+    return 0;  
+}
+
