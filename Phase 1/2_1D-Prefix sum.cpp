@@ -4,35 +4,25 @@
 using namespace std;
 
 void prefix_sum() {
-    int n, q;
-    cin>>n>>q;
+    int n;
+    cin>>n;
 
     vector<int> v(n);
     for(int i=0; i<n; i++) {
         cin>>v[i];
-        v[i] = ((v[i]%MOD)+MOD)%MOD;
     }
 
     vector<int> ps(n);
     ps[0]=v[0];
 
     for(int i=1; i<n; i++) {
-        ps[i]=(ps[i-1]+v[i])%MOD;
+        ps[i]=ps[i-1]+v[i];
     }
 
-    while(q--){
-        int l,r;
-        cin>>l>>r;
-
-        l-=1;
-        r-=1;
-
-        if(l!=0)
-            cout << ((ps[r]-ps[l-1])+MOD)%MOD << "\n";
-        else cout << ps[r] << "\n";
+    for(auto it : ps) {
+        cout << it << " ";
     }
 }
-
 
 void difference_array() {
     int n = 5; 
